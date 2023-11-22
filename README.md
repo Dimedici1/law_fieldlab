@@ -2,7 +2,6 @@
 
 ## Clone the Repository
 ```
-Clone the Github repository:
 git clone https://github.com/Dimedici1/law_fieldlab.git
 ```
 ## Set Up Virtual Environment
