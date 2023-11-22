@@ -44,7 +44,8 @@ python save_model.py
 ```
 Move the tokenizer files to the model files
 ```
-cd 
+mv 
+```
 ## Finetune Model
 Clone the LMFlow repository and follow the instructions in the README file. Set the input path of the model to $HOME/LawFieldlab/save_model/model_for_finetune and output path to $HOME/LawFieldlab/run_model_files/examples/output_models/finetuned_model.
 
