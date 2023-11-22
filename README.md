@@ -19,7 +19,7 @@ pip install -r requirements.txt
 cd database
 nano link_collection.py
 ```
-2. Navigate to create_database directory. Ensure the persist path is correctly set:
+2. Make sure the persist path is correctly set:
 ```
 nano create_database.py
 ```
