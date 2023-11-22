@@ -21,7 +21,6 @@ nano link_collection.py
 ```
 2. Navigate to create_database directory. Ensure the persist path is correctly set:
 ```
-cd database
 nano create_database.py
 ```
 Replace the persist path with: ```/home/{your_username}/LawFieldlab/create_database/database```
