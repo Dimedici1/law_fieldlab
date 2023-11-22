@@ -23,7 +23,7 @@ nano link_collection.py
 ```
 nano create_database.py
 ```
-Replace the persist path with: ```/home/{your_username}/LawFieldlab/create_database/database```
+Replace the persist path with: ```$HOME/LawFieldlab/create_database/database```
 
 Run the create_database.py file to store the vectorized data
 ```
@@ -42,31 +42,34 @@ Run the save_model.py file
 ```
 python save_model.py
 ```
+Move the tokenizer files to the model files
+```
+cd 
 ## Finetune Model
-Clone the LMFlow repository and follow the instructions in the README file. Set the input path of the model to /home/{your_username}/LawFieldlab/save_model/model_for_finetune and output path to /home/{your_username}/LawFieldlab/run_model_files/examples/output_models/finetuned_model.
+Clone the LMFlow repository and follow the instructions in the README file. Set the input path of the model to $HOME/LawFieldlab/save_model/model_for_finetune and output path to $HOME/LawFieldlab/run_model_files/examples/output_models/finetuned_model.
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
 ./scripts/run_finetune_with_lora.sh \
-  --model_name_or_path /home/{your_username}/LawFieldlab/save_model/model_for_finetune \
-  --dataset_path /home/{your_username}/LawFieldlab/LMFlow/data/alpaca/train \
-  --output_lora_path /home/{your_username}/LawFieldlab/run_model_files/examples/output_models/finetuned_model
+  --model_name_or_path $HOME/LawFieldlab/save_model/model_for_finetune \
+  --dataset_path $HOME/LawFieldlab/LMFlow/data/alpaca/train \
+  --output_lora_path $HOME/LawFieldlab/run_model_files/examples/output_models/finetuned_model
 
 ./scripts/run_finetune_with_lora_save_aggregated_weights.sh \
-  --model_name_or_path /home/{your_username}/LawFieldlab/save_model/model_for_finetune \
-  --dataset_path /home/{your_username}/LawFieldlab/LMFlow/data/alpaca/train \
-  --output_lora_path /home/{your_username}/LawFieldlab/run_model_files/examples/output_models/finetuned_model
+  --model_name_or_path $HOME/LawFieldlab/save_model/model_for_finetune \
+  --dataset_path $HOME/LawFieldlab/LMFlow/data/alpaca/train \
+  --output_lora_path $HOME/LawFieldlab/run_model_files/examples/output_models/finetuned_model
 ```
 ## Run Model Files
 Update create_prompt.py in create_prompt directory to set the correct database path:
 ```
-cd /home/{your_username}/LawFieldlab/run_model_files/examples/
+cd $HOME/LawFieldlab/run_model_files/examples/
 nano create_prompt.py
 ```
-Replace the persist path with: ```/home/{your_username}/LawFieldlab/create_database/database```
+Replace the persist path with: ```$HOME/LawFieldlab/create_database/database```
 
 # Run the model files:
 ```
-cd /home/{your_username}/LawFieldlab/run_model_files
-python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path /home/{your_username}/run_model_files/output_models/finetuned_model --max_new_tokens 200
+cd $HOME/LawFieldlab/run_model_files
+python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path $HOME/LawFieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
 ```
