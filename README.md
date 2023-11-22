@@ -35,7 +35,11 @@ Navigate to save_model directory. Replace the Hugging Face token in save_model.p
 cd ..
 cd save_model
 nano save_model.py
-# Replace huggingface_token in save_model.py
+```
+Replace huggingface_token in save_model.py
+
+Run the save_model.py file
+```
 python save_model.py
 ```
 ## Finetune Model
