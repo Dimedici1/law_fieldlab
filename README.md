@@ -47,6 +47,7 @@ cd save_model
 
 Run the save_model.py file
 ```
+git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
 Provide your Huggingface Username and Access Token
