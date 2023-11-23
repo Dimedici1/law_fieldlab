@@ -22,7 +22,7 @@ from lmflow.args import ModelArguments, DatasetArguments, AutoArguments
 from os.path import expanduser
 import sys
 from pathlib import Path
-sys.path.append(str(Path.home()) + "/run_model_files/examples')
+sys.path.append(str(Path.home()) + "/run_model_files/examples")
 from create_prompt import get_data
 
 MAX_BOXES = 20
