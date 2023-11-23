@@ -31,12 +31,12 @@ logging.disable(logging.ERROR)
 warnings.filterwarnings("ignore")
 
 title = """
-<h1 align="center">Master Thesis</h1>
+<h1 align="center">Law Fieldlab</h1>
 <link rel="stylesheet" href="/path/to/styles/default.min.css">
 <script src="/path/to/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 
-<p>This Master Thesis shows how fine-tuning and Retrieval Augmented Generation.</p>
+<p>This Master Thesis shows how fine-tuning and Retrieval Augmented Generation can improve Llama 2 performance.</p>
 
 """
 css = """
