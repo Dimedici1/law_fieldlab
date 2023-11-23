@@ -14,17 +14,11 @@ conda install mpi4py
 pip install -r requirements.txt
 ```
 ## Create the Database
-1. Update the link collection with relevant links from EUR-Lex that contain CELEX codes.
+Update the link collection with relevant links from EUR-Lex that contain CELEX codes.
 ```
 cd database
 nano link_collection.py
 ```
-2. Make sure the persist path is correctly set:
-```
-nano create_database.py
-```
-Replace the persist path with: ```$HOME/law_fieldlab/create_database/database```
-
 Run the create_database.py file to store the vectorized data
 ```
 python create_database.py
@@ -66,8 +60,6 @@ Update create_prompt.py in create_prompt directory to set the correct database p
 cd $HOME/law_fieldlab/run_model_files/examples/
 nano create_prompt.py
 ```
-Replace the persist path with: ```$HOME/law_fieldlab/create_database/database```
-
 # Run the model files:
 ```
 cd $HOME/law_fieldlab/run_model_files
