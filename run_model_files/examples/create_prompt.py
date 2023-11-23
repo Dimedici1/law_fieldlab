@@ -1,15 +1,14 @@
-#from transformers import pipeline, LlamaForCausalLM, AutoTokenizer
-#from huggingface_hub import login
-#import torch
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.document_transformers import (
     LongContextReorder,
 )
+from os.path import expanduser
+HOME = expanduser("~")
 
 def rag(query, chunk_size, chunk_overlap, number_results):
     
-    persist_directory = '/home/lorenzo/langchain/database'
+    persist_directory = 'HOME/law_fieldlab/create_database/database'
     embeddings_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
     vector_db = Chroma(persist_directory=persist_directory, embedding_function=embeddings_function)
