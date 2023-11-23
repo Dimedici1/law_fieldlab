@@ -92,6 +92,8 @@ cd data && ./download.sh alpaca && cd -
 To run the model keep the lmflow environment and run:
 ```
 pip install langchain
+pip install sentence-transformers
+pip install chromadb
 ```
 
 Run the model files:
