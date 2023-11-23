@@ -89,12 +89,8 @@ cd data && ./download.sh alpaca && cd -
   --output_model_path ${HOME}law_fieldlab/run_model_files/examples/output_models/finetuned_model
 ```
 ## Run Model Files
-Navigate to run model files folder
-```
-cd $HOME/law_fieldlab/run_model_files/
-```
 Run the model files:
 ```
-cd ${HOME}law_fieldlab/run_model_files
-python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
+cd ${HOME}law_fieldlab/run_model_files/examples
+python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
 ```
