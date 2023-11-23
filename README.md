@@ -65,6 +65,9 @@ Make sure to install all requirements by running
 ```
 pip install -e .
 ```
+There are a few problems that need to be sorted before finetuning. Run:
+
+pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
