@@ -77,23 +77,23 @@ Run the finetuning scripts (Here with example alpaca data from LMFlow):
 cd data && ./download.sh alpaca && cd -
 
 ./scripts/run_finetune_with_lora.sh \
-  --model_name_or_path $HOME/law_fieldlab/save_model/model_for_finetune \
-  --dataset_path $HOME/law_fieldlab/LMFlow/data/alpaca/train \
-  --output_lora_path $HOME/law_fieldlab/run_model_files/examples/output_models/finetuned_model
+  --model_name_or_path $HOMElaw_fieldlab/save_model/model_for_finetune \
+  --dataset_path $HOMElaw_fieldlab/LMFlow/data/alpaca/train \
+  --output_lora_path $HOMElaw_fieldlab/run_model_files/examples/output_models/finetuned_model
 
 ./scripts/run_finetune_with_lora_save_aggregated_weights.sh \
-  --model_name_or_path $HOME/law_fieldlab/save_model/model_for_finetune \
-  --dataset_path $HOME/law_fieldlab/LMFlow/data/alpaca/train \
-  --output_lora_path $HOME/law_fieldlab/run_model_files/examples/output_models/finetuned_model
+  --model_name_or_path $HOMElaw_fieldlab/save_model/model_for_finetune \
+  --dataset_path $HOMElaw_fieldlab/LMFlow/data/alpaca/train \
+  --output_lora_path $HOMElaw_fieldlab/run_model_files/examples/output_models/finetuned_model
 ```
 ## Run Model Files
 Update create_prompt.py in create_prompt directory to set the correct database path:
 ```
-cd $HOME/law_fieldlab/run_model_files/examples/
+cd $HOMElaw_fieldlab/run_model_files/examples/
 nano create_prompt.py
 ```
 # Run the model files:
 ```
-cd $HOME/law_fieldlab/run_model_files
-python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path $HOME/law_fieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
+cd $HOMElaw_fieldlab/run_model_files
+python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path $HOMElaw_fieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
 ```
