@@ -28,7 +28,7 @@ pip install transformers==4.35.2
 ## Create the Database
 Update the link collection with relevant links from EUR-Lex that contain CELEX codes.
 ```
-cd database
+cd create_database
 nano link_collection.py
 ```
 Run the create_database.py file to store the vectorized data
