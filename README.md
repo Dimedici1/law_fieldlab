@@ -67,7 +67,10 @@ pip install -e .
 ```
 There are a few problems that need to be sorted before finetuning. Run:
 
+```
 pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
+pip install datasets==2.14.6
+```
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
