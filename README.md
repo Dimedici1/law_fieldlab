@@ -61,6 +61,11 @@ cd ..
 ```
 Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow) and follow the instructions in the README file. Set the input path of the model to $HOME/law_fieldlab/save_model/model_for_finetune and output path to $HOME/law_fieldlab/run_model_files/examples/output_models/finetuned_model.
 
+Make sure to install all requirements by running
+```
+pip install -e .
+```
+
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
 cd data && ./download.sh alpaca && cd -
