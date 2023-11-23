@@ -11,6 +11,7 @@ cd law_fieldlab
 conda create -n lawlab python=3.9 -y
 conda activate lawlab
 conda install mpi4py
+
 ```
 Install the requirements
 ```
@@ -20,10 +21,11 @@ Install additional packages that can not be installed with requirements.txt
 
 ```
 pip install icetk==0.0.7
-pip install datasets==2.14.6
-pip install tokenizers==0.13.3
 pip install chromadb==0.4.18
 pip install transformers==4.35.2
+pip install tokenizers==0.13.3
+pip install datasets==2.14.6
+
 ```
 ## Create the Database
 Update the link collection with relevant links from EUR-Lex that contain CELEX codes.
