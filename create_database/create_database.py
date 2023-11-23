@@ -4,11 +4,10 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from link_collection import link_collection
 import chromadb
-from os.path import expanduser
-HOME = expanduser("~")
+from pathlib import Path
 
+persist_directory = "str(Path.home())/law_fieldlab/create_database/database"
 ID_LIST = [0]
-persist_directory = "HOME/las_fieldlab/create_database/database"
 
 chroma_client = chromadb.Client()
 collection = chroma_client.create_collection(name="EU_embeddings")
