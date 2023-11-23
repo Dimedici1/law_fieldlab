@@ -25,6 +25,7 @@ pip install chromadb==0.4.18
 pip install transformers==4.35.2
 pip install tokenizers==0.13.3
 pip install datasets==2.14.6
+pip install sentence-transformers
 
 ```
 ## Create the Database
