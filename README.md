@@ -63,6 +63,8 @@ Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow) and follow 
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
+cd data && ./download.sh alpaca && cd -
+
 ./scripts/run_finetune_with_lora.sh \
   --model_name_or_path $HOME/law_fieldlab/save_model/model_for_finetune \
   --dataset_path $HOME/law_fieldlab/LMFlow/data/alpaca/train \
