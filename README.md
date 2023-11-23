@@ -78,12 +78,12 @@ cd data && ./download.sh alpaca && cd -
 
 ./scripts/run_finetune_with_lora.sh \
   --model_name_or_path $HOMElaw_fieldlab/save_model/model_for_finetune \
-  --dataset_path $HOMElaw_fieldlab/LMFlow/data/alpaca/train \
+  --dataset_path data/alpaca/train \
   --output_lora_path $HOMElaw_fieldlab/run_model_files/examples/output_models/finetuned_model
 
 ./scripts/run_finetune_with_lora_save_aggregated_weights.sh \
   --model_name_or_path $HOMElaw_fieldlab/save_model/model_for_finetune \
-  --dataset_path $HOMElaw_fieldlab/LMFlow/data/alpaca/train \
+  --dataset_path data/alpaca/train \
   --output_lora_path $HOMElaw_fieldlab/run_model_files/examples/output_models/finetuned_model
 ```
 ## Run Model Files
