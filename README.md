@@ -11,6 +11,9 @@ cd law_fieldlab
 conda create -n lawlab python=3.9 -y
 conda activate lawlab
 conda install mpi4py
+```
+Install the requirements
+```
 pip install -r requirements.txt
 ```
 ## Create the Database
