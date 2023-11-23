@@ -6,7 +6,7 @@ from link_collection import link_collection
 import chromadb
 from pathlib import Path
 
-persist_directory = "database"
+persist_directory = str(Path.home()) + "/law_fieldlab/create_database/database"
 ID_LIST = [0]
 
 chroma_client = chromadb.Client()
