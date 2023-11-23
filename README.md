@@ -43,14 +43,13 @@ Navigate to save_model directory and replace the Hugging Face token in save_mode
 ```
 cd ..
 cd save_model
-nano save_model.py
 ```
 
 Run the save_model.py file
 ```
-python save_model.py
+git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
-Move the tokenizer files to the model files
+Provide your Huggingface Username and Access Token
 ```
 mv $HOME/law_fieldlab/save_model/tokenizer_for_finetune/* $HOME/law_fieldlab/save_model/model_for_finetune/
 ```
