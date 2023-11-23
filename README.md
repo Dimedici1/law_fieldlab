@@ -55,7 +55,11 @@ Move the tokenizer files to the model files
 mv $HOME/law_fieldlab/save_model/tokenizer_for_finetune/* $HOME/law_fieldlab/save_model/model_for_finetune/
 ```
 ## Finetune Model
-Clone the LMFlow repository and follow the instructions in the README file. Set the input path of the model to $HOME/law_fieldlab/save_model/model_for_finetune and output path to $HOME/law_fieldlab/run_model_files/examples/output_models/finetuned_model.
+Move back to the law_fieldlab directory
+```
+cd ..
+```
+Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow) and follow the instructions in the README file. Set the input path of the model to $HOME/law_fieldlab/save_model/model_for_finetune and output path to $HOME/law_fieldlab/run_model_files/examples/output_models/finetuned_model.
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
