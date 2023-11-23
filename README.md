@@ -52,7 +52,7 @@ python save_model.py
 ```
 Move the tokenizer files to the model files
 ```
-mv $HOME/law_fieldlab/save_model/tokenizer_for_finetune/* $HOME/law_fieldlab/save_model/model_for_finetune/
+mv {$HOME}law_fieldlab/save_model/tokenizer_for_finetune/* {$HOME}law_fieldlab/save_model/model_for_finetune/
 ```
 ## Finetune Model
 Move back to the law_fieldlab directory
