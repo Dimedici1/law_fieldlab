@@ -89,12 +89,11 @@ cd data && ./download.sh alpaca && cd -
   --output_model_path ${HOME}law_fieldlab/run_model_files/examples/output_models/finetuned_model
 ```
 ## Run Model Files
-Update create_prompt.py in create_prompt directory to set the correct database path:
+Navigate to run model files folder
 ```
-cd $HOMElaw_fieldlab/run_model_files/examples/
-nano create_prompt.py
+cd $HOME/law_fieldlab/run_model_files/
 ```
-# Run the model files:
+Run the model files:
 ```
 cd ${HOME}law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed configs/ds_config_chatbot.json --model_name_or_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model --max_new_tokens 200
