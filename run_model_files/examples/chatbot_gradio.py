@@ -77,7 +77,7 @@ class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=f"""<s>[INST] <<SYS>>
     Use the following pieces of context to answer the question at the end. If the questions refers to previous messages use the history and context to answer the question.
-    If you don't know the answer, just say that you don't know, don't try to make up an answer. End every message with \n\n\n\n 
+    If you don't know the answer, just say that you don't know, don't try to make up an answer. Always end your message with: \n\n\n\n 
     History: {{input_text}}
     Context: {{data}}
     <</SYS>>
