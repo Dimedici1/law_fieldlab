@@ -39,19 +39,15 @@ Run the create_database.py file to store the vectorized data
 python create_database.py
 ```
 ## Save Llama 2 Model
-Navigate to save_model directory and replace the Hugging Face token in save_model.py:
+Navigate to save_model directory and clone the model from Huggingface
 ```
 cd ..
 cd save_model
-```
-
-Run the save_model.py file
-```
 sudo apt-get install git-lfs
 git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
-Provide your Huggingface Username and Access Token
+Provide your Huggingface Username and Access Token. The wandb token should be saved as well.
 
 ## Finetune Model
 Move back to the law_fieldlab directory
