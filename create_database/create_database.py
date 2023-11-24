@@ -45,9 +45,7 @@ def get_document_embeddings(urls, chunk_size, chunk_overlap):
     # Get embeddings
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
-    
     # Create a Chroma vector store from texts and metadata
-    # Create a retriever
     vectordb = Chroma.from_texts(texts=texts_to_embed, embedding=embeddings, metadatas=metadata_list, persist_directory=persist_directory)
     vectordb.persist()
     vectordb = None
@@ -56,7 +54,7 @@ def get_document_embeddings(urls, chunk_size, chunk_overlap):
 
 def main():
     # Document URLs
-    document_urls = link_collection[1:3]  # Assuming this is a list of URLs
+    document_urls = link_collection
 
     # Get embeddings
     get_document_embeddings(document_urls, chunk_size=512, chunk_overlap=50)
