@@ -6,42 +6,7 @@ The purpose of this repository is to improve Llama 2 using finetuning and RAG. T
 ```
 git clone https://github.com/Dimedici1/law_fieldlab.git
 ```
-## Set Up Virtual Environment
-Navigate to the project directory and set up the virtual environment:
-```
-cd law_fieldlab
-conda create -n lawlab python=3.9 -y
-conda activate lawlab
-conda install mpi4py
 
-```
-Install the requirements
-```
-pip install -r requirements.txt
-```
-Install additional packages that can not be installed with requirements.txt
-
-```
-pip install icetk==0.0.7
-pip install chromadb==0.4.18
-pip install transformers==4.35.2
-pip install tokenizers==0.13.3
-pip install datasets==2.14.6
-pip install sentence-transformers
-
-```
-## Create the Database
-Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input.
-```
-
-cd create_database
-nano link_collection.py
-
-```
-Run the create_database.py file to store the vectorized data
-```
-python create_database.py
-```
 ## Save Llama 2 Model
 Navigate to save_model directory and clone the model from Huggingface
 ```
@@ -97,16 +62,28 @@ cd data && ./download.sh alpaca && cd -
   --output_model_path ${HOME}law_fieldlab/run_model_files/examples/output_models/finetuned_model
 
 ```
-## Run Model Files
-To run the model keep the lmflow environment and run:
+## Create the Database
+To create the database keep the lmflow environment and run:
 ```
 pip install langchain
 pip install sentence-transformers
 pip install chromadb
+pip install bs4
 
 ```
 
-Run the model files:
+Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input.
+```
+cd ..
+cd create_database
+nano link_collection.py
+
+```
+Run the create_database.py file to store the vectorized data
+```
+python create_database.py
+```
+## Run Model Files
 ```
 cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path examples/output_models/finetuned_model --max_new_tokens 200
