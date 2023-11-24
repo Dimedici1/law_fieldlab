@@ -10,7 +10,7 @@ git clone https://github.com/Dimedici1/law_fieldlab.git
 ## Save Llama 2 Model
 Navigate to save_model directory and clone the model from Huggingface
 ```
-cd save_model
+cd law_fieldlab/save_model
 sudo apt-get install git-lfs
 git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
