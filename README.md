@@ -9,6 +9,7 @@ git clone https://github.com/Dimedici1/law_fieldlab.git
 ## Set Up Virtual Environment
 Navigate to the project directory and set up the virtual environment:
 ```
+
 cd law_fieldlab
 conda create -n lawlab python=3.9 -y
 conda activate lawlab
