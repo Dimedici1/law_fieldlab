@@ -19,10 +19,10 @@ from lmflow.datasets.dataset import Dataset
 from lmflow.pipeline.auto_pipeline import AutoPipeline
 from lmflow.models.auto_model import AutoModel
 from lmflow.args import ModelArguments, DatasetArguments, AutoArguments
-from os.path import expanduser
+import os
 import sys
-from pathlib import Path
-sys.path.append(str(Path.home()) + "/run_model_files/examples")
+file_dir = os.path.dirname(__file__)
+sys.path.append(file_dir)
 from create_prompt import get_data
 
 MAX_BOXES = 20
