@@ -68,7 +68,7 @@ pip install bs4
 
 ```
 
-Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input.
+Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input. Please only select a part of the provided links. Trying to save all of them does not work.
 ```
 cd ..
 cd create_database
