@@ -22,6 +22,7 @@ pip install -r requirements.txt
 Install additional packages that can not be installed with requirements.txt
 
 ```
+
 pip install icetk==0.0.7
 pip install chromadb==0.4.18
 pip install transformers==4.35.2
@@ -33,8 +34,10 @@ pip install sentence-transformers
 ## Create the Database
 Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input.
 ```
+
 cd create_database
 nano link_collection.py
+
 ```
 Run the create_database.py file to store the vectorized data
 ```
@@ -43,6 +46,7 @@ python create_database.py
 ## Save Llama 2 Model
 Navigate to save_model directory and clone the model from Huggingface
 ```
+
 cd ..
 cd save_model
 sudo apt-get install git-lfs
@@ -59,6 +63,7 @@ cd ..
 ```
 Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow)
 ```
+
 git clone -b v0.0.5 https://github.com/OptimalScale/LMFlow.git
 cd LMFlow
 conda create -n lmflow python=3.9 -y
@@ -75,6 +80,7 @@ pip install -e .
 There are a few problems that need to be sorted before finetuning. Run:
 
 ```
+
 pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
 pip install datasets==2.14.6
 
@@ -82,6 +88,7 @@ pip install datasets==2.14.6
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
+
 cd data && ./download.sh alpaca && cd -
 
 ./scripts/run_finetune_with_lora.sh \
@@ -98,6 +105,7 @@ cd data && ./download.sh alpaca && cd -
 ## Run Model Files
 To run the model keep the lmflow environment and run:
 ```
+
 pip install langchain
 pip install sentence-transformers
 pip install chromadb
@@ -106,6 +114,7 @@ pip install chromadb
 
 Run the model files:
 ```
+
 cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path examples/output_models/finetuned_model --max_new_tokens 200
 
