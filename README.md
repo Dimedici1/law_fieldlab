@@ -91,6 +91,6 @@ pip install chromadb
 
 Run the model files:
 ```
-cd ${HOME}law_fieldlab/run_model_files
+cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path examples/output_models/finetuned_model --max_new_tokens 200
 ```
