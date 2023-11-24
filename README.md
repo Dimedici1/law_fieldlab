@@ -52,10 +52,6 @@ git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
 Provide your Huggingface Username and Access Token
-```
-mv $HOME/law_fieldlab/save_model/tokenizer_for_finetune/* $HOME/law_fieldlab/save_model/model_for_finetune/
-```
-Make sure that a .bin file is in the model_for_finetune folder
 
 ## Finetune Model
 Move back to the law_fieldlab directory
