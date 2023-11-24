@@ -47,6 +47,7 @@ cd save_model
 
 Run the save_model.py file
 ```
+sudo apt-get install git-lfs
 git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
