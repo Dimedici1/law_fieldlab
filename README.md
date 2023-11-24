@@ -19,12 +19,9 @@ git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 Provide your Huggingface Username and Access Token. The Wandb token should be saved as well.
 
 ## Finetune Model
-Move back to the law_fieldlab directory
-```
-cd ..
-```
 Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow)
 ```
+cd ..
 git clone -b v0.0.5 https://github.com/OptimalScale/LMFlow.git
 cd LMFlow
 conda create -n lmflow python=3.9 -y
