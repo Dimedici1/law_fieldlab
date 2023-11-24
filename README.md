@@ -1,5 +1,5 @@
 # Law Fieldlab Project Setup Instructions
-The purpose of this repository is to improve Llama 2 using finetuning and RAG. To use this code a CUDA version higher than 10.3 (Ideally 11.3) is required. Furthermore, the user should have a Hugginface and Wandb account (including access tokens for both). To get access to Llama 2 please visit: https://ai.meta.com/resources/models-and-libraries/llama-downloads/ and accept the terms and conditions. Then go to Huggingface and request access to the repository: https://huggingface.co/meta-llama/Llama-2-7b-chat-hf.
+The purpose of this repository is to improve Llama 2 using finetuning and RAG. To use this code a CUDA version higher than 10.3 (Ideally 11.3) is required. Furthermore, the user should have a Hugginface and Wandb account (including access tokens for both). To get access to Llama 2 please visit: https://ai.meta.com/resources/models-and-libraries/llama-downloads/ and accept the terms and conditions. Then go to Huggingface and request access to the repository: https://huggingface.co/meta-llama/Llama-2-7b-chat-hf. The email used when requesting access must be the same as the email from the Huggingface account.
 
 
 ## Clone the Repository
