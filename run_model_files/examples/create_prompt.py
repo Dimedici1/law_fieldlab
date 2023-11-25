@@ -20,11 +20,15 @@ def rag(query, chunk_size, chunk_overlap, number_results):
     reordering = LongContextReorder()
     docs = reordering.transform_documents(docs)
 
-    results = "Take a deep breath and look at these pieces of information step by step."
+    results = ""
+    all_sources = ""
     for doc in docs:
         info = doc.page_content
         info = info.lower().strip()
-        results = results + info
+        results += info
+
+        sources = doc.metadatas
+        all_sources += sources
     results = "### " + results + " ###"
     return results
 
