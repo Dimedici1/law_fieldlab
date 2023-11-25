@@ -76,8 +76,9 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>> Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't 
-        know, don't try to make up an answer. Always end your message with: \n\n\n\n 
+        f"""<s>[INST] <<SYS>> Use the following pieces of context to answer the question at the end and provide the sources of the pieces 
+        used to answer the question. If you don't know the answer, just say that you don't know, don't try to make up an answer. 
+        Always end your message with: [$] 
     History: {{input_text}}
     Context: {{data}}
     <</SYS>>
@@ -87,7 +88,7 @@ class ChatbotArguments:
         },
     )
     end_string: Optional[str] = field(
-        default="\n\n\n\n",
+        default="[$]",
         metadata={
             "help": "end string mark of the chatbot's output"
         },
