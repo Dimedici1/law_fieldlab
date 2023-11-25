@@ -23,7 +23,7 @@ def rag(query, number_results):
     results = ""
     all_sources = ""
     for doc in docs:
-        source = doc.metadatas
+        source = doc.metadata["source"]
         info = doc.page_content
         info = info.lower().strip()
         results += "### " + info + " (Source: " + source + ")" + " ###"
