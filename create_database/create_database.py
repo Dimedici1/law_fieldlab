@@ -9,8 +9,8 @@ from pathlib import Path
 persist_directory = str(Path.home()) + "/law_fieldlab/create_database/database"
 ID_LIST = [0]
 
-chroma_client = chromadb.Client()
-collection = chroma_client.create_collection(name="EU_embeddings")
+#chroma_client = chromadb.Client()
+#collection = chroma_client.create_collection(name="EU_embeddings")
 
 def get_document_embeddings(urls, chunk_size, chunk_overlap):
     # Get the documents and summaries
