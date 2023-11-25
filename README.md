@@ -50,12 +50,12 @@ cd data && ./download.sh alpaca && cd -
 ./scripts/run_finetune_with_lora.sh \
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
   --dataset_path data/alpaca/train \
-  --output_lora_path ${HOME}law_fieldlab/run_model_files/examples/output_models/finetuned_model
+  --output_lora_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
 
 ./scripts/run_finetune_with_lora_save_aggregated_weights.sh \
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
   --dataset_path data/alpaca/train \
-  --output_model_path ${HOME}law_fieldlab/run_model_files/examples/output_models/finetuned_model
+  --output_model_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
 
 ```
 ## Create the Database
