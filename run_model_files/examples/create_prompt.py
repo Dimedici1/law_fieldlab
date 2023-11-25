@@ -16,10 +16,9 @@ def rag(query, chunk_size, chunk_overlap, number_results):
     query = query.lower().strip()
     docs = retriever.get_relevant_documents(query)
 
-    if number_results >= 10:
-        # Reorder the documents
-        reordering = LongContextReorder()
-        docs = reordering.transform_documents(docs)
+    # Reorder the documents
+    reordering = LongContextReorder()
+    docs = reordering.transform_documents(docs)
 
     results = "Take a deep breath and look at these pieces of information step by step."
     for doc in docs:
