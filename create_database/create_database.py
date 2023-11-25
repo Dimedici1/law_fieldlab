@@ -54,7 +54,7 @@ def get_document_embeddings(urls, chunk_size, chunk_overlap):
 
 def main():
     # Document URLs
-    document_urls = link_collection[1:67]
+    document_urls = link_collection[1:100]
 
     # Get embeddings
     get_document_embeddings(document_urls, chunk_size=512, chunk_overlap=50)
