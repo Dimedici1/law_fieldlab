@@ -5,7 +5,7 @@ from langchain.document_transformers import (
 )
 from pathlib import Path
 
-def rag(query, chunk_size, chunk_overlap, number_results):
+def rag(query, number_results):
     persist_directory = str(Path.home()) + "/law_fieldlab/create_database/database"
     embeddings_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
@@ -33,8 +33,6 @@ def rag(query, chunk_size, chunk_overlap, number_results):
     return results
 
 def get_data(query: str):
-    chunk_size = 512
-    chunk_overlap = 50
     number_results = 4
-    results = rag(query, chunk_size, chunk_overlap, number_results)
+    results = rag(query, number_results)
     return query, results
