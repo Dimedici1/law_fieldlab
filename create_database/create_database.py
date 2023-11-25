@@ -57,7 +57,7 @@ def main():
     document_urls = link_collection[1:100]
 
     # Get embeddings
-    get_document_embeddings(document_urls, chunk_size=1024, chunk_overlap=100)
+    get_document_embeddings(document_urls, chunk_size=300, chunk_overlap=30)
 
     print("Embeddings saved locally.")
 
