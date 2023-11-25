@@ -22,7 +22,7 @@ def get_document_embeddings(urls, chunk_size, chunk_overlap):
 
     # Initialize the text splitter
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap,
-                                                   separators=["\n", "."])
+                                                   separators=["\n\n", "\n", "", " "], length_function = len)
 
     # List to store document splits with metadata
     split_documents_with_metadata = []
@@ -57,7 +57,7 @@ def main():
     document_urls = link_collection[1:100]
 
     # Get embeddings
-    get_document_embeddings(document_urls, chunk_size=512, chunk_overlap=50)
+    get_document_embeddings(document_urls, chunk_size=1024, chunk_overlap=100)
 
     print("Embeddings saved locally.")
 
