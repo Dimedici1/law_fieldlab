@@ -13,6 +13,7 @@ def rag(query, chunk_size, chunk_overlap, number_results):
     retriever = vector_db.as_retriever(search_type="mmr", search_kwargs={"k": number_results})
     
     # Get relevant documents ordered by relevance score
+    query = query.lower().strip()
     docs = retriever.get_relevant_documents(query)
 
     if number_results >= 10:
@@ -23,7 +24,9 @@ def rag(query, chunk_size, chunk_overlap, number_results):
     results = "Take a deep breath and look at these pieces of information step by step."
     for doc in docs:
         info = doc.page_content
-        results = results + "\n###" + " " + info + "###\n"
+        info = info.lower().strip()
+        results = results + info
+    results = "### " + results + " ###"
     return results
 
 def get_data(query: str):
