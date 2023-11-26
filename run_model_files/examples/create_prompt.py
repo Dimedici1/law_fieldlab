@@ -32,4 +32,4 @@ def rag(query, number_results):
 def get_data(query: str):
     number_results = 4
     results = rag(query, number_results)
-    return query, results
+    return results
