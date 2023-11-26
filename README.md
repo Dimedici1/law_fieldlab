@@ -42,7 +42,14 @@ pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/
 pip install datasets==2.14.6
 
 ```
-
+Create directory to store JSON file
+```
+cd data
+mkdir qa_finetune
+cd qa_finetune
+mkdir train
+cd $HOME/law_fieldlab/LMFlow
+```
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
 mv ${HOME}law_fieldlab/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
