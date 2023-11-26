@@ -87,7 +87,7 @@ class ChatbotArguments:
         },
     )
     end_string: Optional[str] = field(
-        default="[$]",
+        default="\n\n\n",
         metadata={
             "help": "end string mark of the chatbot's output"
         },
