@@ -76,8 +76,10 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>> If you don't know the answer, just say that you don't know, don't try to make up an answer. 
-        Take a deep breath and answer this question step by step. Write a maximum of 300 words and use the context to answer the question. 
+        f"""<s>[INST] <<SYS>> Write a maximum of 300 words and use the pieces of context to answer the question.
+        Answer in the following format:  Your answer without mentioning a single link \n\n Sources:\nlink1\nlink2\nlink3\n\n\n.
+        If the context has nothing to do with the question just write: Please ask a question about Consumer protection in the EU, don't try to make up an answer.
+        Take a deep breath and answer this question step by step.
     History: {{input_text}}
     Context: {{data}}
     <</SYS>>
