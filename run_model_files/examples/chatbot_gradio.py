@@ -76,9 +76,8 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>> Use the following pieces of context to answer the question at the end and provide the sources of the pieces 
-        used to answer the question. If you don't know the answer, just say that you don't know, don't try to make up an answer. 
-        Always end your message with: [$] 
+        f"""<s>[INST] <<SYS>> If you don't know the answer, just say that you don't know, don't try to make up an answer. 
+        Take a deep breath and answer this question step by step. Write a maximum of 300 words and use the context to answer the question. 
     History: {{input_text}}
     Context: {{data}}
     <</SYS>>
