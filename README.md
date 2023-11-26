@@ -45,16 +45,16 @@ pip install datasets==2.14.6
 
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
-cd data && ./download.sh alpaca && cd -
+mv $HOME/law_fieldlab/qa_finetune.json $HOME/law_fieldlab/LMFlow/data/qa_finetune/train/
 
 ./scripts/run_finetune_with_lora.sh \
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
-  --dataset_path data/alpaca/train \
+  --dataset_path data/qa_finetune/train \
   --output_lora_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
 
 ./scripts/run_finetune_with_lora_save_aggregated_weights.sh \
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
-  --dataset_path data/alpaca/train \
+  --dataset_path data/qa_finetune/train \
   --output_model_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
 
 ```
