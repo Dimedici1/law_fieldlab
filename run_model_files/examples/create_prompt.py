@@ -26,7 +26,7 @@ def rag(query, number_results):
         source = doc.metadata["source"]
         info = doc.page_content
         info = info.lower().strip()
-        results += "### " + info + " (Source: " + source + ")" + " ###"
+        results += "### " + info + " (Source: " + source + ")" + " ### "
     return results
 
 def get_data(query: str):
