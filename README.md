@@ -51,7 +51,7 @@ python generate_examples.py
 ### Finetune
 Create directory to store JSON file and move the JSON file into the new directory
 ```
-cd data
+cd $HOME/law_fieldlab/LMFlow/data
 mkdir qa_finetune
 cd qa_finetune
 mkdir train
