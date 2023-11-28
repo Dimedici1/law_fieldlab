@@ -43,22 +43,22 @@ pip install datasets==2.14.6
 
 ```
 ### Create Finetuning Dataset
-Create directory to store JSON file
-```
-cd data
-mkdir qa_finetune
-cd qa_finetune
-mkdir train
-```
 Move to finetuning_dataset directory and run generate_examples.py
 ```
 cd $HOME/law_fieldlab/finetuning_dataset
 python generate_examples.py
 ```
 ### Finetune
+Create directory to store JSON file and move the JSON file into the new directory
+```
+cd data
+mkdir qa_finetune
+cd qa_finetune
+mkdir train
+mv ${HOME}law_fieldlab/finetuning_dataset/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
+```
 Run the finetuning scripts (Here with example alpaca data from LMFlow):
 ```
-mv ${HOME}law_fieldlab/finetuning_dataset/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
 cd $HOME/law_fieldlab/LMFlow
 ./scripts/run_finetune_with_lora.sh \
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
