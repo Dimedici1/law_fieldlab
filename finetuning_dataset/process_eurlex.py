@@ -57,6 +57,10 @@ def create_combined_context(original_row, similar_rows):
 
     # Fill the remaining slots with parts from the similar list
     num_remaining_parts = 4 - num_parts_from_original
+
+    # Ensure not to sample more than available parts
+    num_remaining_parts = min(num_remaining_parts, len(similar_combined_parts))
+    
     selected_similar_parts = random.sample(similar_combined_parts, num_remaining_parts)
 
     # Combine and shuffle the selected parts
