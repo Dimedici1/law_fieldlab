@@ -98,7 +98,7 @@ def find_top_two_overlaps(df):
 def process_dataset_in_chunks(df, chunk_size):
     num_chunks = len(df) // chunk_size + (1 if len(df) % chunk_size != 0 else 0)
     chunked_examples = []
-
+    final_celex_list = []
     for chunk_idx in range(num_chunks):
         print(f"Chunk {chunk_idx} done")
         # Extract a chunk of the dataset
@@ -108,7 +108,6 @@ def process_dataset_in_chunks(df, chunk_size):
         top_two_overlaps = find_top_two_overlaps(chunk)
         # Create combined contexts for each document in the chunk
         combined_contexts = []
-        final_celex_list = []
         for i, _ in enumerate(chunk.iterrows()):
             original_row = chunk.iloc[i]
             similar_rows = [chunk.iloc[idx] for idx in top_two_overlaps[i]]
