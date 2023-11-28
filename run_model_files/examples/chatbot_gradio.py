@@ -76,14 +76,12 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>> Write a maximum of 300 words and use the pieces of context to answer the question.
-        Answer in the following format:  Your answer without mentioning a single link \n\n Sources:\nlink1\nlink2\nlink3\n\n\n.
-        If the context has nothing to do with the question just write: Please ask a question about Consumer protection in the EU, don't try to make up an answer.
-        Take a deep breath and answer this question step by step.
-    History: {{input_text}}
-    Context: {{data}}
-    <</SYS>>
-    {{query}} [/INST]""",
+        f"""<s>[INST] <<SYS>> You are a friendly chatbot that answers legal questions. Your main task is to assist the user as well as you can.\n"
+            "Format: Based on the information in my database the answer is:\n\nAnswer to question\n\nSources:\nlink1\nlink2\nlink3\nlink4\n\n\nLlama 2 can make mistakes. Consider checking important information."
+            History: {{input_text}}
+            Context: {{data}}
+        <</SYS>>
+        {{query}} [/INST]""",
         metadata={
             "help": "prompt structure given user's input text"
         },
