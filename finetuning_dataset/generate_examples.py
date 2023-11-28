@@ -54,7 +54,6 @@ def construct_examples(df, contexts, questions, summaries, celex_list):
 def generate_integrated_examples(chunk_size):
     data = eurlex_dataset
     df = pd.DataFrame(data)
-    print(type(df))
 
     # Process dataset in chunks
     combined_contexts, final_celex_list = process_dataset_in_chunks(df, chunk_size)
