@@ -76,8 +76,8 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>> You are a friendly chatbot that answers legal questions. Your main task is to assist the user as well as you can.\n"
-            "Format: Based on the information in my database the answer is:\n\nAnswer to question\n\nSources:\nlink1\nlink2\nlink3\nlink4\n\n\nLlama 2 can make mistakes. Consider checking important information."
+        f"""<s>[INST] <<SYS>>  Use your knowledge and the context to answer the question at the end.
+If you used the context name the  \nSources:\n\n. Always give the user a warning at the end \n\nLlama 2 can make mistakes. Consider checking important information.
             History: {{input_text}}
             Context: {{data}}
         <</SYS>>
