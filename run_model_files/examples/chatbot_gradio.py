@@ -76,22 +76,36 @@ css = """
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"""<s>[INST] <<SYS>>  Use your knowledge and the context to answer the question at the end.
-If you used the context name the  \nSources:\n\n. Always give the user a warning at the end \n\nLlama 2 can make mistakes. Consider checking important information.
-            History: {{input_text}}
-            Context: {{data}}
-        <</SYS>>
-        {{query}} [/INST]""",
+        f"<s>[INST] <<SYS>> Context: {{data}}\nHistory: {{input_text}}\n<</SYS>> {{query}} Never write more than 4 sentences. Use the context to answer the question."
+        f"Name your sources in this format: \n\nlink1\n\n Name all relevant links. [/INST]",
         metadata={
             "help": "prompt structure given user's input text"
         },
-    )
+)
     end_string: Optional[str] = field(
         default="\n\n\n",
         metadata={
             "help": "end string mark of the chatbot's output"
         },
     )
+
+"""
+@dataclass
+class ChatbotArguments:
+    prompt_structure: Optional[str] = field(
+        default=
+        f"<s>[INST] <<SYS>> Context: {{data}} <</SYS>> {{query}} Never write more than 2 sentences. [/INST]",
+        metadata={
+            "help": "prompt structure given user's input text"
+        },
+)
+    end_string: Optional[str] = field(
+        default="\n\n\n",
+        metadata={
+            "help": "end string mark of the chatbot's output"
+        },
+    )
+"""
 
 
 pipeline_name = "inferencer"
