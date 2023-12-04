@@ -48,6 +48,12 @@ Move to finetuning_dataset directory and run generate_examples.py
 cd $HOME/law_fieldlab/finetuning_dataset
 python generate_examples.py
 ```
+Alternatively the alpaca finetuning can be used
+```
+cd $HOME/law_fieldlab/finetuning_dataset
+python alpaca_finetuning.py
+```
+
 ### Finetune
 Create directory to store JSON file and move the JSON file into the new directory
 ```
@@ -55,9 +61,24 @@ cd $HOME/law_fieldlab/LMFlow/data
 mkdir qa_finetune
 cd qa_finetune
 mkdir train
+
+# Choose either the qa_finetuning.json or alpaca_finetuning.json file
 mv ${HOME}law_fieldlab/finetuning_dataset/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
+mv ${HOME}law_fieldlab/finetuning_dataset/alpaca_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
 ```
-Run the finetuning scripts (Here with example alpaca data from LMFlow):
+Make sure to only store one JSON file in the directory.
+
+### Adjust epoch
+The default epoch from LMFlow is 0.01. Adjust this epoch to be at least 1 for both files
+```
+cd $HOME/law_fieldlab/LMFlow/scripts
+nano run_finetune_with_lora.sh
+```
+```
+nano run_finetune_with_lora_save_aggregated_weights.sh
+```
+### Run finetuning
+Run the finetuning scripts:
 ```
 cd $HOME/law_fieldlab/LMFlow
 ./scripts/run_finetune_with_lora.sh \
