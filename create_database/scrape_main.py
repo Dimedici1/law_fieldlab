@@ -28,13 +28,13 @@ def format_text(text):
 
 
 def scrape_summaries(summary_links):
-    summaries_list = list()
-    for idx, link in enumerate(summary_links):
+    summaries_list = []
+    valid_summary_links = []
+    for link in summary_links:
         print(link)
         n = 0
         doc = None
-        while doc is None and n < 10:
-            break_search = False
+        while doc is None and n < 3:
             # Pause for a random time between 0 and 1 seconds
             time_to_sleep = random.uniform(0, 1)
             time.sleep(time_to_sleep)
@@ -45,21 +45,22 @@ def scrape_summaries(summary_links):
             if doc == "None":
                 print("Summary not found")
                 doc = None
-                if n == 9:
-                    del summary_links[idx]
-                    break_search = True
+                if n == 2:
+                    break
             n += 1
-        if break_search:
-            continue
-        # Remove all <>
-        cleaned_text = re.sub(r'<.*?>', '', doc)
-        # Now remove all newline characters
-        #cleaned_text = re.sub(r'\n', '', cleaned_text)
-        # Reformat summaries
-        cleaned_text = format_text(cleaned_text)
-        # Append to list
-        summaries_list.append(cleaned_text)
-    return summaries_list, summary_links
+
+        if doc is not None:
+            # Remove all <>
+            cleaned_text = re.sub(r'<.*?>', '', doc)
+            # Reformat summaries
+            cleaned_text = format_text(cleaned_text)
+            # Append to list
+            summaries_list.append(cleaned_text)
+            valid_summary_links.append(link)
+        else:
+            print(f"Failed to scrape summary for {link}")
+
+    return summaries_list, valid_summary_links
 
 
 def scrape_full_documents(urls):
