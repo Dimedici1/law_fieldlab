@@ -1,11 +1,9 @@
-import warnings
 from scraping_functions import create_soup
 import re
 import time
 import random
 
 warnings.filterwarnings('ignore')
-
 
 def format_text(text):
     # Remove leading and trailing whitespaces
@@ -34,7 +32,7 @@ def scrape_summaries(summary_links):
         print(link)
         n = 0
         doc = None
-        while doc is None and n < 3:
+        while doc is None and n < 10:
             # Pause for a random time between 0 and 1 seconds
             time_to_sleep = random.uniform(0, 1)
             time.sleep(time_to_sleep)
@@ -45,7 +43,7 @@ def scrape_summaries(summary_links):
             if doc == "None":
                 print("Summary not found")
                 doc = None
-                if n == 2:
+                if n == 9:
                     break
             n += 1
 
@@ -61,7 +59,6 @@ def scrape_summaries(summary_links):
             print(f"Failed to scrape summary for {link}")
 
     return summaries_list, valid_summary_links
-
 
 def scrape_full_documents(urls):
     documents_list = list()
