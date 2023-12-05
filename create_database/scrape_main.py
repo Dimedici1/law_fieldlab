@@ -1,3 +1,4 @@
+import warnings
 from scraping_functions import create_soup
 import re
 import time
