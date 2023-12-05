@@ -36,7 +36,7 @@ title = """
 <script src="/path/to/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 
-<p>This Master Thesis shows how fine-tuning and Retrieval Augmented Generation can improve Llama 2 performance.</p>
+<p align="center">This Master Thesis shows how fine-tuning and Retrieval Augmented Generation can improve Llama 2 performance.</p>
 
 """
 css = """
