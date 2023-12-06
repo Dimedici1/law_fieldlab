@@ -45,12 +45,12 @@ pip install datasets==2.14.6
 ### Create Finetuning Dataset
 Move to finetuning_dataset directory and run generate_examples.py
 ```
-cd $HOME/law_fieldlab/finetuning_dataset
+cd $HOME/law_fieldlab/old_files/finetuning/finetuning_dataset
 python generate_examples.py
 ```
 Alternatively the alpaca finetuning can be used
 ```
-cd $HOME/law_fieldlab/finetuning_dataset
+cd $HOME/law_fieldlab/old_files/finetuning/finetuning_dataset
 python alpaca_finetuning.py
 ```
 
@@ -63,8 +63,8 @@ cd qa_finetune
 mkdir train
 
 # Choose either the qa_finetuning.json or alpaca_finetuning.json file
-mv ${HOME}law_fieldlab/finetuning_dataset/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
-mv ${HOME}law_fieldlab/finetuning_dataset/alpaca_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
+mv ${HOME}law_fieldlab/old_files/finetuning/qa_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
+mv ${HOME}law_fieldlab/old_files/finetuning/alpaca_finetuning.json ${HOME}law_fieldlab/LMFlow/data/qa_finetune/train
 ```
 Make sure to only store one JSON file in the directory.
 
@@ -106,16 +106,18 @@ Update the link collection with relevant links from EUR-Lex that contain CELEX c
 ```
 cd ..
 cd create_database
-nano link_collection.py
-
-```
-Run the create_database.py file to store the vectorized data
-```
 python create_database.py
-```
+
 ## Run Model Files
+Run finetuned model
 ```
 cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path output_models/finetuned_model --max_new_tokens 700
+
+```
+Run regular model
+```
+cd $HOME/law_fieldlab/run_model_files
+python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf --max_new_tokens 700
 
 ```
