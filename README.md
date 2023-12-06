@@ -107,13 +107,12 @@ Update the link collection with relevant links from EUR-Lex that contain CELEX c
 cd ..
 cd create_database
 python create_database.py
-
+```
 ## Run Model Files
 Run finetuned model
 ```
 cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path output_models/finetuned_model --max_new_tokens 700
-
 ```
 Run regular model
 ```
