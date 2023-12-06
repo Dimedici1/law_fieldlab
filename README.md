@@ -99,6 +99,7 @@ pip install langchain
 pip install sentence-transformers
 pip install chromadb
 pip install bs4
+pip install pypdf
 
 ```
 
