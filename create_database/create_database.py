@@ -1,8 +1,6 @@
-from scrape_main import scrape_full_documents
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from link_collection import link_collection
 import chromadb
 from pathlib import Path
 from langchain.document_loaders import PyPDFLoader
