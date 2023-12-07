@@ -37,7 +37,7 @@ publishers = ["University of Chicago Law School",
              "European Competition Journal"]
 
 titles = ["A Framework for the New Personalization of Law",
-          "Ppersonalized Prices in European Competition Law",
+          "Personalized Prices in European Competition Law",
           "Personalizing Mandatory Rules in Contract Law",
           "Big Data and Personalised Price Discrimination in EU Competition Law",
           "Online Price Discrimination and EU Data Privacy Law",
