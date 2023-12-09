@@ -6,7 +6,7 @@ from langchain.document_transformers import (
 from pathlib import Path
 import pandas as pd
 
-def rag(query, number_results, df, idx):
+def rag(query, number_results, df, idx, similarity):
     persist_directory = str(Path.home()) + "/law_fieldlab/create_database/database"
     embeddings_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
@@ -36,7 +36,7 @@ def rag(query, number_results, df, idx):
     print(results)
     return results
 
-def get_data(query: str, all_df, idx):
+def get_data(query: str, all_df, idx, similarity):
     number_results = 4
     results = rag(query, number_results, all_df, idx)
     return results
