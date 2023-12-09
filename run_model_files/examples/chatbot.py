@@ -26,7 +26,7 @@ sys.path.append(file_dir)
 from create_prompt import get_data
 from pathlib import Path
 
-testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/"
+testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/Master_Thesis_Questions.csv"
 
 
 logging.disable(logging.ERROR)
