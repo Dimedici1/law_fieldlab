@@ -120,3 +120,17 @@ cd $HOME/law_fieldlab/run_model_files
 python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf --max_new_tokens 700
 
 ```
+
+## Testing
+
+Give the sh files permission
+```
+cd $HOME/law_fieldlab/run_model_files/scripts/
+chmod +x run_chatbot.sh
+chmod +x run_chatbot_base.sh
+chmod +x run_chatbot_filtered_mmr.sh
+chmod +x run_chatbot_similarity.sh
+chmod +x run_chatbot_mmr.sh
+chmod +x run_chatbot_similarity.sh
+
+```
