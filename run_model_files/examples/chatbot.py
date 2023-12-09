@@ -111,7 +111,7 @@ def main():
     for input_text in questions: 
         context_data = get_data(input_text)
         history_text = "" # Reset history for each question because an independent context is needed
-        prompt = chatbot_args.prompt_structure.format(context=context_data, history=history_text, query=input_text)
+        prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
         prompt = prompt[-model.get_max_length():]
 
         input_dataset = dataset.from_dict({
