@@ -108,7 +108,8 @@ def main():
     end_string = chatbot_args.end_string
     prompt_structure = chatbot_args.prompt_structure
 
-    for input_text in questions: 
+    for idx, input_text in enumerate(questions):
+        print(f"Question {idx}")
         context_data = get_data(input_text)
         history_text = "" # Reset history for each question because an independent context is needed
         prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
