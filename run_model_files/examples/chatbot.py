@@ -18,6 +18,11 @@ from lmflow.datasets.dataset import Dataset
 from lmflow.pipeline.auto_pipeline import AutoPipeline
 from lmflow.models.auto_model import AutoModel
 from lmflow.args import ModelArguments, DatasetArguments, AutoArguments
+import os
+import sys
+file_dir = os.path.dirname(__file__)
+sys.path.append(file_dir)
+from create_prompt import get_data
 
 
 logging.disable(logging.ERROR)
@@ -40,6 +45,12 @@ class ChatbotArguments:
             "help": "end string mark of the chatbot's output"
         },
     )
+
+def hist2context(history):
+    input_text = ""
+    for query, response in history:
+        input_text += f"User: {query}\nChatbot: {response}\n"
+    return input_text
 
 def main():
     pipeline_name = "inferencer"
@@ -99,24 +110,32 @@ def main():
     end_string = chatbot_args.end_string
     prompt_structure = chatbot_args.prompt_structure
 
+    history = []
     while True:
         input_text = input("User >>> ")
         if input_text == "exit":
             print("exit...")
             break
         elif input_text == "reset":
-            context = ""
+            history = []
             print("Chat history cleared")
             continue
         if not input_text:
             input_text = " "
-
-        context += prompt_structure.format(input_text=input_text)
-        context = context[-model.get_max_length():]     # Memory of the bot
+    
+        # Get context data for the current input_text
+        context_data = get_data(input_text)
+    
+        # Build the full history text using the previous history
+        history_text = hist2context(history)
+    
+        # Update the prompt with the new input, history, and context data
+        prompt = chatbot_args.prompt_structure.format(context=context_data, history=history_text, query=input_text)
+        prompt = prompt[-model.get_max_length():]  # Adjust for model's max length
 
         input_dataset = dataset.from_dict({
             "type": "text_only",
-            "instances": [ { "text": context } ]
+            "instances": [ { "text": prompt } ]
         })
 
         print("Bot: ", end="")
@@ -125,7 +144,7 @@ def main():
         token_per_step = 4
 
         for response, flag_break in inferencer.stream_inference(
-            context=context,
+            context=prompt,
             model=model,
             max_new_tokens=inferencer_args.max_new_tokens,
             token_per_step=token_per_step,
@@ -149,7 +168,8 @@ def main():
                 break
         print("\n", end="")
 
-        context += response + "\n"
+        # After generating the response, update the history
+        history.append((input_text, response))
 
 
 if __name__ == "__main__":
