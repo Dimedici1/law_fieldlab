@@ -68,6 +68,16 @@ sources = ["Anthony Casey & Anthony Niblett, A Framework for the New Personaliza
 
 
 
+def clean_text(text):
+    # Replace newlines
+    text = text.replace('\n\n', '\n')
+    text = text.replace('\n', ' ')
+
+    # Remove leading and trailing whitespaces
+    text = text.strip()
+
+    return text
+
 def get_document_embeddings(documents, authors, publishers, titles, sources, chunk_size, chunk_overlap):
     # Initialize the text splitter
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap,
@@ -81,6 +91,7 @@ def get_document_embeddings(documents, authors, publishers, titles, sources, chu
         print(f"Processing Document {idx}")
         splits = text_splitter.split_text(doc)
         for split in splits:
+           split = clean_text(split)
             # Create a dictionary with the text and the corresponding metadata
             metadata = {
                 "author": authors[idx],
