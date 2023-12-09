@@ -10,7 +10,7 @@ git clone https://github.com/Dimedici1/law_fieldlab.git
 ## Save Llama 2 Model
 Navigate to save_model directory and clone the model from Huggingface
 ```
-cd law_fieldlab/save_model
+cd $HOME/law_fieldlab/save_model
 sudo apt-get install git-lfs
 git lfs install
 git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
@@ -96,31 +96,6 @@ cd $HOME/law_fieldlab/run_model_files
 
 ```
 
-
-## Finetune Model
-Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow)
-```
-cd $HOME/law_fieldlab/
-git clone -b v0.0.5 https://github.com/OptimalScale/LMFlow.git
-cd LMFlow
-conda create -n lmflow python=3.9 -y
-conda activate lmflow
-conda install mpi4py
-bash install.sh
-
-```
-
-Make sure to install all requirements by running
-```
-pip install -e .
-```
-There are a few problems that need to be sorted before finetuning. Run:
-
-```
-pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
-pip install datasets==2.14.6
-
-```
 ### Create Finetuning Dataset
 Move to finetuning_dataset directory and run generate_examples.py
 ```
