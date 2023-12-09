@@ -124,13 +124,13 @@ def main():
         for resp, flag_break in inferencer.stream_inference(
             context=prompt,
             model=model,
-            max_new_tokens=inferencer_args.max_new_tokens,
+            max_new_tokens=700,
             token_per_step=token_per_step,
             temperature=inferencer_args.temperature,
             end_string=end_string,
             input_dataset=input_dataset
         ):
-            response += resp
+            response = resp
             if flag_break:
                 break
 
