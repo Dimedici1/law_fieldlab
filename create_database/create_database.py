@@ -91,7 +91,7 @@ def get_document_embeddings(documents, authors, publishers, titles, sources, chu
         print(f"Processing Document {idx}")
         splits = text_splitter.split_text(doc)
         for split in splits:
-           split = clean_text(split)
+            split = clean_text(split)
             # Create a dictionary with the text and the corresponding metadata
             metadata = {
                 "author": authors[idx],
