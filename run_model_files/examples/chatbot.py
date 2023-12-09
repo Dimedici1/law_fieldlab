@@ -118,7 +118,7 @@ def main():
             "type": "text_only",
             "instances": [ { "text": prompt } ]
         })
-
+        token_per_step = 4 
         response = ""
         for resp, flag_break in inferencer.stream_inference(
             context=prompt,
