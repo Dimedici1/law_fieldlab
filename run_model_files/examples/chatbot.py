@@ -27,7 +27,7 @@ from create_prompt import get_data
 from pathlib import Path
 
 testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/Master_Thesis_Questions.csv"
-
+saving_output_path = str(Path.home()) + "/law_fieldlab/Testing/output_responses.csv"
 
 logging.disable(logging.ERROR)
 warnings.filterwarnings("ignore")
@@ -134,10 +134,14 @@ def main():
             if flag_break:
                 break
 
-        responses_df = responses_df.append({'Question': input_text, 'Answer': response}, ignore_index=True)
+        # Create a new DataFrame for the row to add
+        new_row_df = pd.DataFrame({'Question': [input_text], 'Answer': [response]})
+    
+        # Concatenate the new DataFrame with the existing one
+        responses_df = pd.concat([responses_df, new_row_df], ignore_index=True)
 
     # Save the responses to a CSV file
-    responses_df.to_csv('output_responses.csv', index=False)
+    responses_df.to_csv(saving_output_path, index=False)
 
 if __name__ == "__main__":
     main()
