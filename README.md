@@ -96,6 +96,10 @@ cd $HOME/law_fieldlab/run_model_files
 
 ```
 
+## Example Finetuning
+
+Here is an example of how finetuning could be performed. This is not relevant for the rest of the repository.
+
 ### Create Finetuning Dataset
 Move to finetuning_dataset directory and run generate_examples.py
 ```
