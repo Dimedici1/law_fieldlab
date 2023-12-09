@@ -49,17 +49,20 @@ class ChatbotArguments:
             "help": "end string mark of the chatbot's output"
         },
     )
-
+"""
 def hist2context(history):
     input_text = ""
     for query, response in history:
         input_text += f"User: {query}\nChatbot: {response}\n"
     return input_text
-
+"""
 def main():
     # import questions to iterate through
     questions_df = pd.read_csv(testing_data_path)
-    questions = questions_df['Question'].tolist() 
+    questions = questions_df['Question'].tolist()
+
+    # DataFrame to store responses
+    responses_df = pd.DataFrame(columns=['Question', 'Answer'])
     
     pipeline_name = "inferencer"
     PipelineArguments = AutoArguments.get_pipeline_args_class(pipeline_name)
@@ -100,58 +103,24 @@ def main():
     if model_args.lora_model_path is not None:
         model_name += f" + {model_args.lora_model_path}"
 
-    guide_message = (
-        "\n"
-        f"#############################################################################\n"
-        f"##   A {model_name} chatbot is now chatting with you!\n"
-        f"#############################################################################\n"
-        "\n"
-    )
-    print(guide_message)
-
-    # context = (
-    #     "You are a helpful assistant who follows the given instructions"
-    #     " unconditionally."
-    # )
-    context = ""
+#    context = ""
 
     end_string = chatbot_args.end_string
     prompt_structure = chatbot_args.prompt_structure
 
-    history = []
-    while True:
-        input_text = input("User >>> ")
-        if input_text == "exit":
-            print("exit...")
-            break
-        elif input_text == "reset":
-            history = []
-            print("Chat history cleared")
-            continue
-        if not input_text:
-            input_text = " "
-    
-        # Get context data for the current input_text
+    for input_text in questions: 
         context_data = get_data(input_text)
-    
-        # Build the full history text using the previous history
-        history_text = hist2context(history)
-    
-        # Update the prompt with the new input, history, and context data
+        history_text = "" # Reset history for each question because an independent context is needed
         prompt = chatbot_args.prompt_structure.format(context=context_data, history=history_text, query=input_text)
-        prompt = prompt[-model.get_max_length():]  # Adjust for model's max length
+        prompt = prompt[-model.get_max_length():]
 
         input_dataset = dataset.from_dict({
             "type": "text_only",
             "instances": [ { "text": prompt } ]
         })
 
-        print("Bot: ", end="")
-        print_index = 0
-
-        token_per_step = 4
-
-        for response, flag_break in inferencer.stream_inference(
+        response = ""
+        for resp, flag_break in inferencer.stream_inference(
             context=prompt,
             model=model,
             max_new_tokens=inferencer_args.max_new_tokens,
@@ -160,25 +129,14 @@ def main():
             end_string=end_string,
             input_dataset=input_dataset
         ):
-            # Prints characters in the buffer
-            new_print_index = print_index
-            for char in response[print_index:]:
-                if end_string is not None and char == end_string[0]:
-                    if new_print_index + len(end_string) >= len(response):
-                        break
-
-                new_print_index += 1
-                print(char, end="", flush=True)
-
-            print_index = new_print_index
-
+            response += resp
             if flag_break:
                 break
-        print("\n", end="")
 
-        # After generating the response, update the history
-        history.append((input_text, response))
+        responses_df = responses_df.append({'Question': input_text, 'Answer': response}, ignore_index=True)
 
+    # Save the responses to a CSV file
+    responses_df.to_csv('output_responses.csv', index=False)
 
 if __name__ == "__main__":
     main()
