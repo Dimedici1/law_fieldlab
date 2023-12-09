@@ -18,6 +18,86 @@ git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
 ```
 Provide your Huggingface Username and Access Token. The Wandb token should be saved as well.
 
+## Install LMFlow repository and lmflow environment
+Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow)
+```
+cd $HOME/law_fieldlab/
+git clone -b v0.0.5 https://github.com/OptimalScale/LMFlow.git
+cd LMFlow
+conda create -n lmflow python=3.9 -y
+conda activate lmflow
+conda install mpi4py
+bash install.sh
+
+```
+
+Make sure to install all requirements by running
+```
+pip install -e .
+```
+There are a few problems that need to be sorted before finetuning. Run:
+
+```
+pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
+pip install datasets==2.14.6
+
+```
+
+```
+## Create the Database
+To create the database keep the lmflow environment and run:
+```
+pip install langchain
+pip install sentence-transformers
+pip install chromadb
+pip install bs4
+pip install pypdf
+
+```
+
+Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input. Please only select a part of the provided links. Trying to save all of them does not work.
+```
+cd $HOME/law_fieldlab/create_database/
+python create_database.py
+```
+## Run Model Files
+Run finetuned model
+```
+cd $HOME/law_fieldlab/run_model_files
+python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path output_models/finetuned_model --max_new_tokens 700
+```
+Run regular model
+```
+cd $HOME/law_fieldlab/run_model_files
+python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf --max_new_tokens 700
+
+```
+
+## Testing
+
+Give the sh files permission
+```
+cd $HOME/law_fieldlab/run_model_files/scripts/
+chmod +x run_chatbot.sh
+chmod +x run_chatbot_base.sh
+chmod +x run_chatbot_filtered_mmr.sh
+chmod +x run_chatbot_similarity.sh
+chmod +x run_chatbot_mmr.sh
+chmod +x run_chatbot_similarity.sh
+
+```
+Run the testing files
+```
+cd $HOME/law_fieldlab/run_model_files
+./scripts/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+
+```
+
+
 ## Finetune Model
 Clone the LMFlow repository (https://github.com/OptimalScale/LMFlow)
 ```
@@ -90,57 +170,3 @@ cd $HOME/law_fieldlab/LMFlow
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
   --dataset_path data/qa_finetune/train \
   --output_model_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
-
-```
-## Create the Database
-To create the database keep the lmflow environment and run:
-```
-pip install langchain
-pip install sentence-transformers
-pip install chromadb
-pip install bs4
-pip install pypdf
-
-```
-
-Update the link collection with relevant links from EUR-Lex that contain CELEX codes. Alternatively, the code can be adapted to accept any form of string input. Please only select a part of the provided links. Trying to save all of them does not work.
-```
-cd $HOME/law_fieldlab/create_database/
-python create_database.py
-```
-## Run Model Files
-Run finetuned model
-```
-cd $HOME/law_fieldlab/run_model_files
-python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path output_models/finetuned_model --max_new_tokens 700
-```
-Run regular model
-```
-cd $HOME/law_fieldlab/run_model_files
-python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files/configs/ds_config_chatbot.json --model_name_or_path $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf --max_new_tokens 700
-
-```
-
-## Testing
-
-Give the sh files permission
-```
-cd $HOME/law_fieldlab/run_model_files/scripts/
-chmod +x run_chatbot.sh
-chmod +x run_chatbot_base.sh
-chmod +x run_chatbot_filtered_mmr.sh
-chmod +x run_chatbot_similarity.sh
-chmod +x run_chatbot_mmr.sh
-chmod +x run_chatbot_similarity.sh
-
-```
-Run the testing files
-```
-cd $HOME/law_fieldlab/run_model_files
-./scripts/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-
-```
