@@ -43,7 +43,6 @@ pip install datasets==2.14.6
 
 ```
 
-```
 ## Create the Database
 To create the database keep the lmflow environment and run:
 ```
@@ -170,3 +169,4 @@ cd $HOME/law_fieldlab/LMFlow
   --model_name_or_path ${HOME}law_fieldlab/save_model/Llama-2-7b-chat-hf/ \
   --dataset_path data/qa_finetune/train \
   --output_model_path ${HOME}law_fieldlab/run_model_files/output_models/finetuned_model
+```
