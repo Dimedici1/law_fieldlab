@@ -9,6 +9,7 @@ import os
 import sys
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 import warnings
+import pandas as pd
 
 from dataclasses import dataclass, field
 from transformers import HfArgumentParser
@@ -23,6 +24,9 @@ import sys
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
 from create_prompt import get_data
+from pathlib import Path
+
+testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/"
 
 
 logging.disable(logging.ERROR)
@@ -53,6 +57,10 @@ def hist2context(history):
     return input_text
 
 def main():
+    # import questions to iterate through
+    questions_df = pd.read_csv(testing_data_path)
+    questions = questions_df['Question'].tolist() 
+    
     pipeline_name = "inferencer"
     PipelineArguments = AutoArguments.get_pipeline_args_class(pipeline_name)
 
