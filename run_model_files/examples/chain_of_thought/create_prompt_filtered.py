@@ -13,7 +13,6 @@ def rag(query, number_results, df, idx, similarity):
     vector_db = Chroma(persist_directory=persist_directory, embedding_function=embeddings_function)
     
     #Get the correct paper
-    print(df["Paper"][idx])
     filter_source = df["Paper"][idx]
     
     if filter_source == "General":
@@ -37,7 +36,7 @@ def rag(query, number_results, df, idx, similarity):
         info = info.lower().strip()
         results += "### " + info + " (Source: " + source + ")"
         results += " ###"
-    print(results)
+        
     return results
 
 def get_data(query, number_results, all_df, idx, similarity):
