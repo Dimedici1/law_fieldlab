@@ -25,8 +25,8 @@ file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
 from pathlib import Path
 
-testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/Master_Thesis_Questions.csv"
-saving_output_path = str(Path.home()) + "/law_fieldlab/Testing/zero_shot_prompting/base_responses.csv"
+testing_data_path = str(Path.home()) + "/law_fieldlab/testing/Master_Thesis_Questions.csv"
+saving_output_path = str(Path.home()) + "/law_fieldlab/testing/zero_shot_prompting/base_responses.csv"
 
 logging.disable(logging.ERROR)
 warnings.filterwarnings("ignore")
