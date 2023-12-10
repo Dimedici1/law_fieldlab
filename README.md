@@ -70,6 +70,12 @@ python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files
 
 ## Testing
 
+Adjust the maximum token output by navigating to:
+```
+cd $HOME/law_fieldlab/LMFlow/src/lmflow/pipeline/
+nano inferencer.py
+```
+Search for "def inference". Change the max_token to 1000.
 ### Zero-shot prompting
 
 Give the sh files permission
