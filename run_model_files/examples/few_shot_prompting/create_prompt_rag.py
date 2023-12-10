@@ -28,7 +28,7 @@ def rag(query, number_results, similarity):
         info = info.lower().strip()
         results += "### " + info + " (Source: " + source + ")"
         results += " ###"
-    print(results)
+    
     return results
 
 def get_data(query, number_results, similarity):
