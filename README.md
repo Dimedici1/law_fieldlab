@@ -76,7 +76,7 @@ python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files
 
 Give the sh files permission
 ```
-cd $HOME/law_fieldlab/run_model_files/scripts/
+cd $HOME/law_fieldlab/run_model_files/scripts/zero_shot_prompting/
 chmod +x run_chatbot.sh
 chmod +x run_chatbot_base.sh
 chmod +x run_chatbot_filtered_mmr.sh
