@@ -26,8 +26,8 @@ sys.path.append(file_dir)
 from create_prompt_filtered import get_data
 from pathlib import Path
 
-testing_data_path = str(Path.home()) + "/law_fieldlab/Testing/Master_Thesis_Questions.csv"
-saving_output_path = str(Path.home()) + "/law_fieldlab/Testing/zero_shot_prompting/filtered_mmr_responses.csv"
+testing_data_path = str(Path.home()) + "/law_fieldlab/testing/Master_Thesis_Questions.csv"
+saving_output_path = str(Path.home()) + "/law_fieldlab/testing/zero_shot_prompting/filtered_mmr_responses.csv"
 
 logging.disable(logging.ERROR)
 warnings.filterwarnings("ignore")
