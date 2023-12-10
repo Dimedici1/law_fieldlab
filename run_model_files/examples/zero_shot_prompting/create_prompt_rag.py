@@ -31,7 +31,6 @@ def rag(query, number_results, similarity):
     print(results)
     return results
 
-def get_data(query: str, similarity):
-    number_results = 4
+def get_data(query,number_results, similarity):
     results = rag(query, number_results, similarity)
     return results
