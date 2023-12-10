@@ -11,6 +11,6 @@ fi
 
 CUDA_VISIBLE_DEVICES=0 \
   deepspeed examples/chatbot_filtered_mmr.py \
-      --deepspeed configs/ds_config_chatbot.json \
+      --deepspeed configs/zero_shot_prompting/ds_config_chatbot.json \
       --model_name_or_path ${model} \
       ${lora_args}
