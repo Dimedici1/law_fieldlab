@@ -38,5 +38,5 @@ def rag(query, number_results, df, idx, similarity):
 
 def get_data(query: str, all_df, idx, similarity):
     number_results = 4
-    results = rag(query, number_results, all_df, idx)
+    results = rag(query, number_results, all_df, idx, similarity)
     return results
