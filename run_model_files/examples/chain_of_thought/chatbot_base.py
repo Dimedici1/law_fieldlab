@@ -55,6 +55,62 @@ def hist2context(history):
         input_text += f"User: {query}\nChatbot: {response}\n"
     return input_text
 """
+
+def pick_history(df, idx):
+    # Check the format in the "Question format" column at the specified index
+    question_format = df.at[idx, "Question format"]
+
+    if question_format == "Multiple Choice":
+        return """
+User: What factor is essential for the effectiveness of personalized pricing in e-commerce?
+(A) The geographic location of the user
+(B) The digital marketing strategy
+(C) Accuracy of customer data analysis
+(D) The variety of products offered
+Chatbot: To determine the factor essential for the effectiveness of personalized pricing in e-commerce, consider what personalized pricing relies on. It's the ability to tailor prices to individual customers. This requires understanding each customer's preferences and buying habits. The most crucial aspect of this is accurate customer data analysis, as it provides insights into customer behavior. Therefore, the correct answer is (C) Accuracy of customer data analysis.
+
+User: Which industry is increasingly adopting dynamic pricing models based on user data and behavior?
+(A) Telecommunications
+(B) Online retail
+(C) Automotive sales
+(D) Pharmaceutical
+Chatbot: Dynamic pricing models are used in industries where customer data and behavior can significantly influence pricing strategies. Online retail is a field where customer browsing and purchasing data are readily available and can be used effectively for dynamic pricing. So, the answer is (B) Online retail.
+
+User: What is a potential downside of using personalized pricing based on customer's online activity?
+(A) Increased customer loyalty
+(B) Reduced market competition due to price manipulation
+(C) Improved product quality
+(D) Enhanced user experience
+Chatbot: Personalized pricing based on customer's online activity can lead to reduced market competition. This happens because personalized pricing can manipulate prices in a way that discourages customers from shopping around, which can dampen competition. Hence, the answer is (B) Reduced market competition due to price manipulation.
+"""
+
+    elif question_format in ["Open End", "General"]:
+        return """
+User: In the context of e-commerce, how does price personalization impact consumer trust and brand loyalty?
+Chatbot: Price personalization can be a double-edged sword. On one hand, it offers deals that seem tailored to the consumer, enhancing the shopping experience and loyalty. On the other hand, it can raise privacy and fairness concerns, which may erode trust. Thus, the impact of price personalization on consumer trust and brand loyalty is complex.
+
+User: What ethical considerations should businesses take into account when employing personalized pricing models?
+Chatbot: Businesses must consider several ethical factors, including transparency, data privacy, and fairness, when using personalized pricing models. Ethical practices, such as clear communication about how personal data is used and ensuring prices are fair across different customer segments, are essential.
+
+User: How can regulations ensure fairness in the application of personalized pricing techniques?
+Chatbot: Regulations can play a critical role in ensuring fairness in personalized pricing by setting clear guidelines on data usage, prohibiting discriminatory practices, and mandating transparency about how prices are determined for individual consumers.
+"""
+    elif question_format == "True/False":
+        return """
+User: Does the European Union's GDPR potentially restrict the use of consumers' social media activity for setting personalized prices?
+Chatbot: True. GDPR emphasizes user consent, data transparency, and limitation on the purpose of data use. It doesn't outright ban the use of social media activity for personalized pricing but places restrictions ensuring that any use of such data complies with these principles.
+
+User: Do personalized pricing strategies inherently increase transparency in e-commerce transactions?
+Chatbot: False. Personalized pricing strategies, if not communicated clearly, can actually reduce transparency. Customers might not be aware of how their personal data influences the prices they're offered.
+
+User: Do traditional brick-and-mortar stores commonly employ personalized pricing based on customer demographics?
+Chatbot: False. Traditional brick-and-mortar stores generally do not employ personalized pricing based on customer demographics to the extent seen in online retail. They lack the sophisticated data analytics tools that online platforms use.
+"""
+
+    else:
+        return "Question format not recognized."
+
+
 def main():
     # import questions to iterate through
     questions_df = pd.read_csv(testing_data_path)
@@ -108,9 +164,10 @@ def main():
 
     for idx, input_text in enumerate(questions):
         print(f"Question {idx}")
-        history_text = "" # Reset history for each question because an independent context is needed
+        history_text = pick_history(questions_df, idx)
         prompt = chatbot_args.prompt_structure.format(input_text=history_text, query=input_text)
         prompt = prompt[-model.get_max_length():]
+        print(prompt)
 
         input_dataset = dataset.from_dict({
             "type": "text_only",
