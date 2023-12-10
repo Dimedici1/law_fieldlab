@@ -88,11 +88,11 @@ chmod +x run_chatbot_similarity.sh
 Run the testing files
 ```
 cd $HOME/law_fieldlab/run_model_files
-./scripts/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
-./scripts/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/zero_shot_prompting/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/zero_shot_prompting/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/zero_shot_prompting/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/zero_shot_prompting/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/zero_shot_prompting/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
 
 ```
 
