@@ -16,7 +16,7 @@ def rag(query, number_results, df, idx, similarity):
     print(df["Paper"][idx])
     filter_source = df["Paper"][idx]
     
-    if filter_source == General:
+    if filter_source == "General":
         retriever = vector_db.as_retriever(search_type=similarity, search_kwargs={"k": number_results})
     else:
         retriever = vector_db.as_retriever(search_type=similarity, search_kwargs={"k": number_results, "filter":{"title": filter_source}})
