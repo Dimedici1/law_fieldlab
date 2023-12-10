@@ -275,7 +275,7 @@ class Inferencer(BasePipeline):
                     model=model,
                     dataset=input_dataset,
                     max_new_tokens=token_per_step,
-                    temperature=self.inferencer_args.temperature,
+                    temperature=temperature,
                     remove_image_flag=remove_image_flag,
                 )
 
