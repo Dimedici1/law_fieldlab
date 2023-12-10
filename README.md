@@ -74,6 +74,8 @@ python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files
 
 ## Testing
 
+### Zero-shot prompting
+
 Give the sh files permission
 ```
 cd $HOME/law_fieldlab/run_model_files/scripts/zero_shot_prompting/
@@ -96,7 +98,79 @@ cd $HOME/law_fieldlab/run_model_files
 
 ```
 
-## Example Finetuning
+### Few-shot prompting
+
+Give the sh files permission
+```
+cd $HOME/law_fieldlab/run_model_files/scripts/few_shot_prompting/
+chmod +x run_chatbot.sh
+chmod +x run_chatbot_base.sh
+chmod +x run_chatbot_filtered_mmr.sh
+chmod +x run_chatbot_filtered_similarity.sh
+chmod +x run_chatbot_mmr.sh
+chmod +x run_chatbot_similarity.sh
+
+```
+Run the testing files
+```
+cd $HOME/law_fieldlab/run_model_files
+./scripts/few_shot_prompting/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/few_shot_prompting/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/few_shot_prompting/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/few_shot_prompting/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/few_shot_prompting/run_chatbot_filtered_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+
+```
+### Chain of Thought
+
+Give the sh files permission
+```
+cd $HOME/law_fieldlab/run_model_files/scripts/chain_of_thought/
+chmod +x run_chatbot.sh
+chmod +x run_chatbot_base.sh
+chmod +x run_chatbot_filtered_mmr.sh
+chmod +x run_chatbot_filtered_similarity.sh
+chmod +x run_chatbot_mmr.sh
+chmod +x run_chatbot_similarity.sh
+
+```
+Run the testing files
+```
+cd $HOME/law_fieldlab/run_model_files
+./scripts/chain_of_thought/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/chain_of_thought/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/chain_of_thought/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/chain_of_thought/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/chain_of_thought/run_chatbot_filtered_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+
+```
+
+### Self-Consistency
+
+Give the sh files permission
+```
+cd $HOME/law_fieldlab/run_model_files/scripts/self_consistency/
+chmod +x run_chatbot.sh
+chmod +x run_chatbot_base.sh
+chmod +x run_chatbot_filtered_mmr.sh
+chmod +x run_chatbot_filtered_similarity.sh
+chmod +x run_chatbot_mmr.sh
+chmod +x run_chatbot_similarity.sh
+
+```
+Run the testing files
+```
+cd $HOME/law_fieldlab/run_model_files
+./scripts/self_consistency/run_chatbot_base.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/self_consistency/run_chatbot_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/self_consistency/run_chatbot_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/self_consistency/run_chatbot_filtered_mmr.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+./scripts/self_consistency/run_chatbot_filtered_similarity.sh $HOME/law_fieldlab/save_model/Llama-2-7b-chat-hf
+
+```
+The files will be stored in the testing folder.
+
+# Example Finetuning
 
 Here is an example of how finetuning could be performed. This is not relevant for the rest of the repository.
 
