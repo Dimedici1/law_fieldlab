@@ -187,7 +187,7 @@ def main():
             model=model,
             max_new_tokens=700,
             token_per_step=token_per_step,
-            temperature=inferencer_args.temperature,
+            temperature=0.5,
             end_string=end_string,
             input_dataset=input_dataset
         ):
