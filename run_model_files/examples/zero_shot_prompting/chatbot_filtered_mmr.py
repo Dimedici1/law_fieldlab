@@ -114,6 +114,7 @@ def main():
         prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
         prompt = prompt[-model.get_max_length():]
         print(prompt)
+        
         input_dataset = dataset.from_dict({
             "type": "text_only",
             "instances": [ { "text": prompt } ]
