@@ -80,7 +80,7 @@ cd $HOME/law_fieldlab/run_model_files/scripts/zero_shot_prompting/
 chmod +x run_chatbot.sh
 chmod +x run_chatbot_base.sh
 chmod +x run_chatbot_filtered_mmr.sh
-chmod +x run_chatbot_similarity.sh
+chmod +x run_chatbot_filtered_similarity.sh
 chmod +x run_chatbot_mmr.sh
 chmod +x run_chatbot_similarity.sh
 
