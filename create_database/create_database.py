@@ -4,6 +4,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import chromadb
 from pathlib import Path
 from langchain.document_loaders import PyPDFLoader
+import re
+
 persist_directory = str(Path.home()) + "/law_fieldlab/create_database/database"
 
 authors = ["Anthony Casey & Anthony Niblett",
@@ -75,6 +77,9 @@ def clean_text(text):
 
     # Remove leading and trailing whitespaces
     text = text.strip()
+
+    # Remove multiple spaces
+    text = re.sub(r'\s+', ' ', text)
 
     return text
 
