@@ -82,7 +82,6 @@ mv ${HOME}law_fieldlab/testing/inferencer.py ${HOME}law_fieldlab/LMFlow/src/lmfl
 Give the sh files permission
 ```
 cd $HOME/law_fieldlab/run_model_files/scripts/zero_shot_prompting/
-chmod +x run_chatbot.sh
 chmod +x run_chatbot_base.sh
 chmod +x run_chatbot_filtered_mmr.sh
 chmod +x run_chatbot_filtered_similarity.sh
