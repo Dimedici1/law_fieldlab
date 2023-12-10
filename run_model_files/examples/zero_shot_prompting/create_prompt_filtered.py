@@ -15,7 +15,11 @@ def rag(query, number_results, df, idx, similarity):
     #Get the correct paper
     print(df["Paper"][idx])
     filter_source = df["Paper"][idx]
-    retriever = vector_db.as_retriever(search_type="mmr", search_kwargs={"k": number_results, "filter":{"title": filter_source}})
+    
+    if filter_source == General:
+        retriever = vector_db.as_retriever(search_type=similarity, search_kwargs={"k": number_results})
+    else:
+        retriever = vector_db.as_retriever(search_type=similarity, search_kwargs={"k": number_results, "filter":{"title": filter_source}})
     
     # Get relevant documents ordered by relevance score
     query = query.lower().strip()
@@ -36,7 +40,6 @@ def rag(query, number_results, df, idx, similarity):
     print(results)
     return results
 
-def get_data(query: str, all_df, idx, similarity):
-    number_results = 4
+def get_data(query, number_results, all_df, idx, similarity):
     results = rag(query, number_results, all_df, idx, similarity)
     return results
