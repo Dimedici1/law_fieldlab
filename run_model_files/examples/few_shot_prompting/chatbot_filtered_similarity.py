@@ -165,8 +165,14 @@ def main():
         context_data = get_data(input_text, 4, questions_df, idx, "similarity")
         history_text = choose_history(questions_df, idx)
         prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
+        original_length = len(prompt)
         prompt = prompt[-model.get_max_length():]
+        new_lenght = len(prompt)
+        # Check if the prompt was shortened and print a message if it was
+        if new_lenght < original_length:
+            print(f"\n\n\nTHE PROMPT {idx} HAS BEEN SHORTENED\n\n\n")
         print(prompt)
+        
         input_dataset = dataset.from_dict({
             "type": "text_only",
             "instances": [ { "text": prompt } ]
