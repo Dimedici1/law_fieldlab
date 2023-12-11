@@ -116,7 +116,7 @@ def main():
     questions = questions_df['Question'].tolist()
 
     # DataFrame to store responses
-    responses_df = pd.DataFrame(columns=['Question', 'Answer'])
+    responses_df = pd.DataFrame(questions, columns=['Question'])
     
     pipeline_name = "inferencer"
     PipelineArguments = AutoArguments.get_pipeline_args_class(pipeline_name)
@@ -161,47 +161,44 @@ def main():
 
     end_string = chatbot_args.end_string
     prompt_structure = chatbot_args.prompt_structure
-
-    for idx, input_text in enumerate(questions):
-        print(f"Question {idx}")
-        context_data = get_data(input_text, 4, "mmr")
-        history_text = pick_history(questions_df, idx)
-        prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
-        original_length = len(prompt)
-        prompt = prompt[-model.get_max_length():]
-        new_lenght = len(prompt)
-        # Check if the prompt was shortened and print a message if it was
-        if new_lenght < original_length:
-            print(f"\n\n\nTHE PROMPT {idx} HAS BEEN SHORTENED\n\n\n")
-        print(prompt)
-
-        input_dataset = dataset.from_dict({
-            "type": "text_only",
-            "instances": [ { "text": prompt } ]
-        })
-        token_per_step = 4 
-        response = ""
-        for resp, flag_break in inferencer.stream_inference(
-            context=prompt,
-            model=model,
-            max_new_tokens=300,
-            token_per_step=token_per_step,
-            temperature=0.5,
-            end_string=end_string,
-            input_dataset=input_dataset
-        ):
-            response = resp
-            if flag_break:
-                break
-
-        # Create a new DataFrame for the row to add
-        new_row_df = pd.DataFrame({'Question': [input_text], 'Answer': [response]})
+    for i in range(1, 4):
+        for idx, input_text in enumerate(questions):
+            print(f"Question {idx}")
+            context_data = get_data(input_text, 4, "mmr")
+            history_text = pick_history(questions_df, idx)
+            prompt = chatbot_args.prompt_structure.format(data=context_data, input_text=history_text, query=input_text)
+            original_length = len(prompt)
+            prompt = prompt[-model.get_max_length():]
+            new_lenght = len(prompt)
+            # Check if the prompt was shortened and print a message if it was
+            if new_lenght < original_length:
+                print(f"\n\n\nTHE PROMPT {idx} HAS BEEN SHORTENED\n\n\n")
+            print(prompt)
     
-        # Concatenate the new DataFrame with the existing one
-        responses_df = pd.concat([responses_df, new_row_df], ignore_index=True)
-
-    # Save the responses to a CSV file
-    responses_df.to_csv(saving_output_path, index=False)
+            input_dataset = dataset.from_dict({
+                "type": "text_only",
+                "instances": [ { "text": prompt } ]
+            })
+            token_per_step = 4 
+            response = ""
+            for resp, flag_break in inferencer.stream_inference(
+                context=prompt,
+                model=model,
+                max_new_tokens=300,
+                token_per_step=token_per_step,
+                temperature=0.5,
+                end_string=end_string,
+                input_dataset=input_dataset
+            ):
+                response = resp
+                if flag_break:
+                    break
+    
+            # Update the DataFrame
+            responses_df.at[idx, f'Answer_{i}'] = response
+    
+        # Save the responses to a CSV file
+        responses_df.to_csv(saving_output_path, index=False)
 
 if __name__ == "__main__":
     main()
