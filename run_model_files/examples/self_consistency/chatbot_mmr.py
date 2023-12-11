@@ -187,6 +187,7 @@ def main():
                     break
     
             # Update the DataFrame
+            print(response)             
             responses_df.at[idx, f'Answer_{i}'] = response
     
     # Save the responses to a CSV file
