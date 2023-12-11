@@ -184,6 +184,7 @@ def main():
                 break
 
         # Create a new DataFrame for the row to add
+        print(response)        
         new_row_df = pd.DataFrame({'Question': [input_text], 'Answer': [response]})
     
         # Concatenate the new DataFrame with the existing one
