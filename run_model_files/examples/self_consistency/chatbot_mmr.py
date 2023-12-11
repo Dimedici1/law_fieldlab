@@ -185,7 +185,7 @@ def main():
         for resp, flag_break in inferencer.stream_inference(
             context=prompt,
             model=model,
-            max_new_tokens=700,
+            max_new_tokens=300,
             token_per_step=token_per_step,
             temperature=0.5,
             end_string=end_string,
