@@ -186,9 +186,9 @@ def main():
                 if flag_break:
                     break
     
-            # Update the DataFrame
-            print(response)             
-            responses_df.at[idx, f'Answer_{i}'] = response
+                # Update the DataFrame
+                print(response)             
+                responses_df.at[idx, f'Answer_{i}'] = response
     
     # Save the responses to a CSV file
     responses_df.to_csv(saving_output_path, index=False)
