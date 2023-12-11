@@ -10,7 +10,7 @@ if [ $# -ge 2 ]; then
 fi
 
 CUDA_VISIBLE_DEVICES=0 \
-  deepspeed examples/self_consistency_prompting/chatbot_mmr.py \
+  deepspeed examples/self_consistency/chatbot_mmr.py \
       --deepspeed configs/ds_config_chatbot.json \
       --model_name_or_path ${model} \
       ${lora_args}
