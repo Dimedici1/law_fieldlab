@@ -197,8 +197,8 @@ def main():
             # Update the DataFrame
             responses_df.at[idx, f'Answer_{i}'] = response
     
-        # Save the responses to a CSV file
-        responses_df.to_csv(saving_output_path, index=False)
+    # Save the responses to a CSV file
+    responses_df.to_csv(saving_output_path, index=False)
 
 if __name__ == "__main__":
     main()
