@@ -70,11 +70,10 @@ python examples/chatbot_gradio.py --deepspeed $HOME/law_fieldlab/run_model_files
 
 ## Testing
 
-Replace faulty file in LMFLow to adjust max token size
+Open inferencer.py from LMFLow and make the max_token and temperature variable
 ```
 cd $HOME/law_fieldlab/LMFlow/src/lmflow/pipeline/
-rm inferencer.py
-mv ${HOME}law_fieldlab/testing/inferencer.py ${HOME}law_fieldlab/LMFlow/src/lmflow/pipeline/
+nano inferencer.py
 ```
 
 ### Zero-shot prompting
