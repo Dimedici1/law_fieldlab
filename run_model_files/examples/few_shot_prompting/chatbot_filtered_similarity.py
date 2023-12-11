@@ -62,48 +62,39 @@ def choose_history(df, idx):
 
     if question_format == "Multiple Choice":
         return """
-User: What factor is essential for the effectiveness of personalized pricing in e-commerce?
+[INST] What factor is essential for the effectiveness of personalized pricing in e-commerce?
 (A) The geographic location of the user
 (B) The digital marketing strategy
 (C) Accuracy of customer data analysis
-(D) The variety of products offered
-Chatbot: (C) Accuracy of customer data analysis
+(D) The variety of products offered [/INST] (C) Accuracy of customer data analysis
 
-User: Which industry is increasingly adopting dynamic pricing models based on user data and behavior?
+[INST] Which industry is increasingly adopting dynamic pricing models based on user data and behavior?
 (A) Telecommunications
 (B) Online retail
 (C) Automotive sales
-(D) Pharmaceutical
-Chatbot: (B) Online retail
+(D) Pharmaceutical [/INST] (B) Online retail
 
-User: What is a potential downside of using personalized pricing based on customer's online activity?
+[INST] What is a potential downside of using personalized pricing based on customer's online activity?
 (A) Increased customer loyalty
 (B) Reduced market competition due to price manipulation
 (C) Improved product quality
-(D) Enhanced user experience
-Chatbot: (B) Reduced market competition due to price manipulation
+(D) Enhanced user experience [/INST] (B) Reduced market competition due to price manipulation
 """
     elif question_format in ["Open End", "General"]:
         return """
-User: In the context of e-commerce, how does price personalization impact consumer trust and brand loyalty?
-Chatbot: Price personalization in e-commerce can have a complex impact on consumer trust and brand loyalty. While it can offer tailored deals to consumers, enhancing their shopping experience and loyalty, it can also raise concerns about privacy and fairness, potentially eroding trust.
+[INST] In the context of e-commerce, how does price personalization impact consumer trust and brand loyalty? [/INST] Price personalization in e-commerce can have a complex impact on consumer trust and brand loyalty. While it can offer tailored deals to consumers, enhancing their shopping experience and loyalty, it can also raise concerns about privacy and fairness, potentially eroding trust.
 
-User: What ethical considerations should businesses take into account when employing personalized pricing models?
-Chatbot: Businesses must consider several ethical factors, including transparency, data privacy, and fairness, when using personalized pricing models. Ethical practices, such as clear communication about how personal data is used and ensuring prices are fair across different customer segments, are essential.
+[INST] What ethical considerations should businesses take into account when employing personalized pricing models? [/INST] Businesses must consider several ethical factors, including transparency, data privacy, and fairness, when using personalized pricing models. Ethical practices, such as clear communication about how personal data is used and ensuring prices are fair across different customer segments, are essential.
 
-User: How can regulations ensure fairness in the application of personalized pricing techniques?
-Chatbot: Regulations can play a critical role in ensuring fairness in personalized pricing by setting clear guidelines on data usage, prohibiting discriminatory practices, and mandating transparency about how prices are determined for individual consumers.
+[INST] How can regulations ensure fairness in the application of personalized pricing techniques? [/INST] Regulations can play a critical role in ensuring fairness in personalized pricing by setting clear guidelines on data usage, prohibiting discriminatory practices, and mandating transparency about how prices are determined for individual consumers.
 """
     elif question_format == "True/False":
         return """
-User: Does the European Union's GDPR potentially restrict the use of consumers' social media activity for setting personalized prices?
-Chatbot: True.
+[INST] Does the European Union's GDPR potentially restrict the use of consumers' social media activity for setting personalized prices? [/INST] True.
 
-User: Do personalized pricing strategies inherently increase transparency in e-commerce transactions?
-Chatbot: False.
+[INST] Do personalized pricing strategies inherently increase transparency in e-commerce transactions? [/INST] False.
 
-User: Do traditional brick-and-mortar stores commonly employ personalized pricing based on customer demographics?
-Chatbot: False.
+[INST] Do traditional brick-and-mortar stores commonly employ personalized pricing based on customer demographics? [/INST] False.
 """
     else:
         return "Invalid question format or format not recognized."
