@@ -37,8 +37,7 @@ warnings.filterwarnings("ignore")
 class ChatbotArguments:
     prompt_structure: Optional[str] = field(
         default=
-        f"<s>[INST] <<SYS>> Context: {{data}}\nHistory: {{input_text}}\n<</SYS>> {{query}} Never write more than 4 sentences. Use the context to answer the question."
-        f"Name your sources in this format: \n\nlink1\n\n Name all relevant links. [/INST]",
+        f"<s>[INST] <<SYS>> Context: {{data}}\nHistory: {{input_text}}\n<</SYS>> {{query}} Never write more than 4 sentences. Use the context to answer the question. [/INST]",
         metadata={
             "help": "prompt structure given user's input text"
         },
