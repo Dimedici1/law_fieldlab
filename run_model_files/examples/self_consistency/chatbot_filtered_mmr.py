@@ -116,7 +116,7 @@ def main():
     questions = questions_df['Question'].tolist()
 
     # DataFrame to store responses
-    responses_df = pd.DataFrame(columns = ['Question'])
+    responses_df = pd.DataFrame(questions, columns=['Question'])
     
     pipeline_name = "inferencer"
     PipelineArguments = AutoArguments.get_pipeline_args_class(pipeline_name)
