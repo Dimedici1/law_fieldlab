@@ -152,7 +152,7 @@ def main():
     end_string = chatbot_args.end_string
     prompt_structure = chatbot_args.prompt_structure
 
-    for in range(1, 4):
+    for i in range(1, 4):
         for idx, input_text in enumerate(questions):
             print(f"Question {idx}")
             context_data = get_data(input_text, 4, questions_df, idx, "similarity")
